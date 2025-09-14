@@ -24,3 +24,7 @@ web-sdk/**/build/
 
 # Duże lokalne dane
 math-sdk/**/publish_files/
+
+# certy dev
+*.pem
+
