@@ -1,20 +1,26 @@
 # macOS
 .DS_Store
 
-# Node / Vite / SvelteKit
-web-sdk/**/node_modules/
-web-sdk/**/.svelte-kit/
-web-sdk/**/dist/
-web-sdk/**/build/
-web-sdk/**/.vite/
+# Sekrety / certy / env
+*.pem
+.env
+.env.local
 
 # Python
-rgsenv/
 **/__pycache__/
-*.pyc
+*.py[cod]
+.venv/
+venv/
+env/
+rgsenv/
+math-sdk/env/
 
-# Certy i klucze (lokalne!)
-*.pem
+# Frontend (Vite/SvelteKit)
+web-sdk/**/node_modules/
+web-sdk/**/.svelte-kit/
+web-sdk/**/.vite/
+web-sdk/**/dist/
+web-sdk/**/build/
 
-# Duże dane lokalne
+# Duże lokalne dane
 math-sdk/**/publish_files/
