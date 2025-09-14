@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Node / Vite / SvelteKit
+web-sdk/**/node_modules/
+web-sdk/**/.svelte-kit/
+web-sdk/**/dist/
+web-sdk/**/build/
+web-sdk/**/.vite/
+
+# Python
+rgsenv/
+**/__pycache__/
+*.pyc
+
+# Certy i klucze (lokalne!)
+*.pem
+
+# Duże dane lokalne
+math-sdk/**/publish_files/
