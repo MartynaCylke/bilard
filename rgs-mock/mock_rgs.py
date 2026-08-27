@@ -1,7 +1,7 @@
 # mock_rgs.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Literal, Optional, List
 import os
 import random
@@ -9,10 +9,17 @@ import random
 app = FastAPI(title="RGS Mock", version="1.0")
 
 # CORS: pozwól na dev z localhost:3001 itd.
+DEFAULT_ORIGINS = ["http://localhost:3001", "http://127.0.0.1:3001"]
+allowed_origins = [
+    origin.strip()
+    for origin in os.getenv("MOCK_ALLOWED_ORIGINS", ",".join(DEFAULT_ORIGINS)).split(",")
+    if origin.strip()
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=allowed_origins,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -25,9 +32,9 @@ class AuthenticateReq(BaseModel):
 
 class PlayReq(BaseModel):
     sessionID: str
-    amount: int
+    amount: int = Field(gt=0)
     mode: Literal["BASE", "BONUS"]
-    __forceResult: Optional[dict] = None  # ignorujemy, ale zgodne z web-sdk
+    force_result: Optional[dict] = Field(default=None, alias="__forceResult")
 
 # ============
 # POMOCNICZE
