@@ -9,6 +9,7 @@
 # Python
 **/__pycache__/
 *.py[cod]
+*.egg-info/
 .venv/
 venv/
 env/
@@ -27,4 +28,3 @@ math-sdk/**/publish_files/
 
 # certy dev
 *.pem
-
